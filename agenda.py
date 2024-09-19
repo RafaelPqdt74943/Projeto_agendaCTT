@@ -14,17 +14,14 @@ AGENDA ["Suzana"] = { "telefone" : "99999-8888",
 
 }
 
-def mostrar_contatos(contato):
+def mostrar_contatos():
     for contato in AGENDA:
-        print("nome ", contato)
-        print("Telefone",AGENDA[contato]["telefone"])
-        print("email", AGENDA[contato]["email"])
-        print("endereço", AGENDA[contato]["endereco"])
+        buscar_contato(contato)
         print("-----------------------------------------")
 
 
 
-#mostrar_contatos()
+
 
 def buscar_contato(contato) :
     print("nome ", contato)
@@ -33,6 +30,8 @@ def buscar_contato(contato) :
     print("endereço", AGENDA[contato]["endereco"])
     print("-----------------------------------------")
 
-    
+  
+  
+#mostrar_contatos()   
 buscar_contato("guilherme")
 
