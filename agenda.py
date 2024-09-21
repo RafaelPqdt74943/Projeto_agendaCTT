@@ -21,17 +21,30 @@ def mostrar_contatos():
 
 
 
-
-
 def buscar_contato(contato) :
     print("nome ", contato)
     print("Telefone",AGENDA[contato]["telefone"])
     print("email", AGENDA[contato]["email"])
     print("endereço", AGENDA[contato]["endereco"])
     print("-----------------------------------------")
+    
+
+def incluir_contato(contato, telefone, email, endereco):
+    AGENDA[contato] = {
+        "telefone" : telefone, 
+        "email" : email, 
+        "endereco" : endereco
+        }
 
   
   
-#mostrar_contatos()   
-buscar_contato("guilherme")
+mostrar_contatos()   
+
+incluir_contato( "Rafael", "983212344", "sgtrafael@gmail.com", "rua cap machado" )
+
+mostrar_contatos()   
+
+print("CONTATO INCLUÍDO COM SUCESSO> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>") # o comando .fomart() serve para incluir uma variável no meio da string
+
+#buscar_contato("guilherme")
 
