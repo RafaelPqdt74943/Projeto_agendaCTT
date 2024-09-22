@@ -29,22 +29,18 @@ def buscar_contato(contato) :
     print("-----------------------------------------")
     
 
-def incluir_contato(contato, telefone, email, endereco):
+def incluir_editar_contato(contato, telefone, email, endereco):
     AGENDA[contato] = {
         "telefone" : telefone, 
         "email" : email, 
         "endereco" : endereco
         }
-
+    print("CONTATO {} INCLUÍDO/EDITADO COM SUCESSO> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".format(contato))
   
   
+
+incluir_editar_contato( "Rafael", "983212344", "sgtrafael@gmail.com", "rua cap machado" )
+incluir_editar_contato( "Rafael", "99999-9999", "sgtrafael@gmail.com", "rua cap machado" )
+incluir_editar_contato("josé","9999-6523", "", None)
+
 mostrar_contatos()   
-
-incluir_contato( "Rafael", "983212344", "sgtrafael@gmail.com", "rua cap machado" )
-
-mostrar_contatos()   
-
-print("CONTATO INCLUÍDO COM SUCESSO> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>") # o comando .fomart() serve para incluir uma variável no meio da string
-
-#buscar_contato("guilherme")
-
