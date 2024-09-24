@@ -14,6 +14,12 @@ AGENDA ["Suzana"] = { "telefone" : "99999-8888",
 
 }
 
+AGENDA ["Miguel"] = { "telefone" : "99999-7546",
+                        "email" : "miguel.321@gmail.com",
+                        "endereco" : "av.888 -rj",
+
+}
+
 def mostrar_contatos():
     for contato in AGENDA:
         buscar_contato(contato)
@@ -36,11 +42,15 @@ def incluir_editar_contato(contato, telefone, email, endereco):
         "endereco" : endereco
         }
     print("CONTATO {} INCLUÍDO/EDITADO COM SUCESSO> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".format(contato))
+    
+def excluir_contato(contato):
+    AGENDA.pop(contato) #o .pop é um método pronto do python que exclui um item e um objeto
+    print("Contato excluído {} com sucesso".format(contato))
   
   
 
 incluir_editar_contato( "Rafael", "983212344", "sgtrafael@gmail.com", "rua cap machado" )
 incluir_editar_contato( "Rafael", "99999-9999", "sgtrafael@gmail.com", "rua cap machado" )
 incluir_editar_contato("josé","9999-6523", "", None)
-
+excluir_contato("Miguel")
 mostrar_contatos()   
