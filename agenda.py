@@ -41,45 +41,53 @@ def incluir_editar_contato(contato, telefone, email, endereco):
         "email" : email, 
         "endereco" : endereco
         }
+    print()
     print("CONTATO {} INCLUÍDO/EDITADO COM SUCESSO> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".format(contato))
+    print()
     
 def excluir_contato(contato):
     AGENDA.pop(contato) #o .pop é um método pronto do python que exclui um item e um objeto
     print("Contato excluído {} com sucesso".format(contato))
   
 
-def mostrar_menu ():
+def imprimir_menu ():
+    print("-------------------------------------------")
     print("1-Mostrar todos os contatos da agenda")
     print("2-Buscar contatos")
     print("3-Incluir Contatos")
     print("4-Editar Contatos")
     print("5-Excluir Contatos")
     print("0- Fechar Agenda")
+    print("-------------------------------------------")
 
 
-mostrar_menu()
-Opcao = input("escolha uma Opção: ")
+while True :
+       
+    imprimir_menu()
 
-print(Opcao)
+    Opcao = input("escolha uma Opção: ")
+
+    print(Opcao)
 
 
-if Opcao == "1" :
-    mostrar_contatos()
-elif Opcao =="2" :
-    contato = input("Digite o nome do contato")
-    buscar_contato(contato)
-elif Opcao == "3" or Opcao == "4" :
-    contato = input("Digite o nome do Contato")
-    telefone = input("Digite o telefone do Contato")
-    email = input("Digite o email do Contato")
-    endereco = input("Digite o endereço do Contato")
-    incluir_editar_contato(contato, telefone, email, endereco)
-    mostrar_contatos()
-elif Opcao == "5" : 
-    contato = input("Digite o nome do contato")
-    excluir_contato(contato)
-    mostrar_contatos()
-elif Opcao == "0" : 
-    print("Fim/fechando do programa!!!!!!!!")
-else :
-    print("DIGITE O COMANDO CORRETO!!!!!!!, OPÇÃO INVALIDA!!!")
+    if Opcao == "1" :
+        mostrar_contatos()
+    elif Opcao =="2" :
+        contato = input("Digite o nome do contato")
+        buscar_contato(contato)
+    elif Opcao == "3" or Opcao == "4" :
+        contato = input("Digite o nome do Contato")
+        telefone = input("Digite o telefone do Contato")
+        email = input("Digite o email do Contato")
+        endereco = input("Digite o endereço do Contato")
+        incluir_editar_contato(contato, telefone, email, endereco)
+        mostrar_contatos()
+    elif Opcao == "5" : 
+        contato = input("Digite o nome do contato")
+        excluir_contato(contato)
+        mostrar_contatos()
+    elif Opcao == "0" : 
+        print(">>>>>>>>Fim/fechando do programa!!!!!!!!")
+        break
+    else :
+        print(">>>>>>>>>>>>>>DIGITE O COMANDO CORRETO!!!!!!!, OPÇÃO INVALIDA!!!")
