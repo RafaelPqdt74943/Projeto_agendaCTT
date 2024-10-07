@@ -1,7 +1,7 @@
 #!usr/bin/python3
 
 AGENDA = {}
-
+'''
 AGENDA ["guilherme"] = { "telefone" : "99999-7777",
                             "email" : "gui.123@gmail.com",
                             "endereco" : "av.123 -rj",
@@ -18,8 +18,8 @@ AGENDA ["Miguel"] = { "telefone" : "99999-7546",
                             "email" : "miguel.321@gmail.com",
                             "endereco" : "av.888 -rj",
 
-    }
-
+ }
+'''
 def mostrar_contatos():
     if AGENDA :
         for contato in AGENDA:
@@ -59,6 +59,7 @@ def incluir_editar_contato(contato,telefone,email,endereco):
         "email" : email, 
         "endereco" : endereco
         }
+    salvar()
     print("-------------------------------------------")
     print("CONTATO {} INCLUÍDO/EDITADO COM SUCESSO> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".format(contato))
     print("-------------------------------------------")
@@ -67,6 +68,7 @@ def excluir_contato(contato):
     try :
         print("-------------------------------------------")
         AGENDA.pop(contato) #o .pop é um método pronto do python que exclui um item e um objeto
+        salvar()
         print("Contato excluído {} com sucesso".format(contato))
         print("-------------------------------------------")
     except Exception as error :
@@ -78,15 +80,20 @@ def excluir_contato(contato):
         print("-------------------------------------------")
         print(">>>>>>>>>>>>>> Um erro inesperado ocorreu")
         print("-------------------------------------------")
-def exportar_contatos():
+        
+def exportar_contatos(nome_do_arquivo):
     try :        
-            with open("exportar.csv","w") as arquivo:
+            with open(nome_do_arquivo,"w") as arquivo:
                 for contato in AGENDA:
-                    arquivo.write("{},{},{},{} \n".format(contato, AGENDA[contato]["telefone"],AGENDA[contato]["email"],AGENDA[contato]["endereco"] ))
+                    telefone=AGENDA[contato]["telefone"]
+                    email=AGENDA[contato]["email"]
+                    endereco=AGENDA[contato]["endereco"]
+                    arquivo.write("{},{},{},{} \n".format(contato, telefone, email, endereco))
             print("arquivo exportado com sucesso!!!!!!!!!!!!")      
     except Exception as error:
         print("algum erro ocorreu")
         print(error)
+        
         
 def importar_contatos(nome_do_arquivo):
     try :
@@ -106,6 +113,37 @@ def importar_contatos(nome_do_arquivo):
     except FileNotFoundError :
         print("arquivo não encontrado")
         
+def salvar():
+    exportar_contatos("database.csv")
+    print(">>>>>agenda exportada com sucesso!!!!!")
+    
+def carregar():
+    try :
+        with open("database.csv", "r") as arquivo:
+            linhas=arquivo.readlines()
+            for linha in linhas:
+                detalhes = linha.strip().split(",")
+              
+                nome = detalhes[0]
+                telefone = detalhes[1]
+                email = detalhes[2]
+                endereco = detalhes[3]
+                
+            AGENDA[nome] = {
+        "telefone" : telefone, 
+        "email" : email, 
+        "endereco" : endereco
+        }
+        print(">>>>Database carregado com sucesso")
+        print(">>>> {} contatos carregados com sucesso".format(len(AGENDA)))
+    except Exception as error :
+        print(error)
+        print("algum erro inesperado ocorreu")
+    except FileNotFoundError :
+        print("arquivo não encontrado")
+                
+                
+        
 
 def imprimir_menu ():
     print("-------------------------------------------")
@@ -120,8 +158,11 @@ def imprimir_menu ():
     print("-------------------------------------------")
 
 
+#INÍCIO DO PROGRAMA
+
+carregar()
+
 while True :
-       
     imprimir_menu()
 
     Opcao = input("escolha uma Opção: ")
@@ -156,7 +197,8 @@ while True :
         contato = input("Digite o nome do contato")
         excluir_contato(contato)
     elif Opcao == "6":
-        exportar_contatos()
+        nome_do_arquivo = input("digite o nome do arquivo a ser exportado: ")
+        exportar_contatos(nome_do_arquivo)
     elif Opcao == "7":
         nome_do_arquivo = input("digite o nome do arquivo a ser importado: ")
         importar_contatos(nome_do_arquivo)

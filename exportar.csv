@@ -1,3 +1,4 @@
-guilherme,99999-7777,gui.123@gmail.com,av.123 -rj 
-Suzana,99999-8888,SUZU.321@gmail.com,av.456 -rj 
-Miguel,99999-7546,miguel.321@gmail.com,av.888 -rj 
+guilherme,99999-7777,gui.123@gmail.com,('gui.123@gmail.com', 'av.123 -rj') 
+Suzana,99999-8888,SUZU.321@gmail.com,('SUZU.321@gmail.com', 'av.456 -rj') 
+Miguel,99999-7546,miguel.321@gmail.com,('miguel.321@gmail.com', 'av.888 -rj') 
+rafa,2198325648,sgtraf@gmail.com,('sgtraf@gmail.com', 'rua cap machado') 
