@@ -36,15 +36,11 @@ def buscar_contato(contato) :
         print("email", AGENDA[contato]["email"])
         print("endereço", AGENDA[contato]["endereco"])
         print("-----------------------------------------")
-    except Exception as error :
-        print("-------------------------------------------")
-        print(">>>>>>>>>>>>>>Contato inexistente")
-        print(error)
-        print("-------------------------------------------")
-    except :
-        print("-------------------------------------------")
-        print(">>>>>>>>>>>>>> Um erro inesperado ocorreu")
-        print("-------------------------------------------")    
+    except KeyError:
+        print('>>>> Contato inexistente')
+    except Exception as error:
+        print('>>>> Um erro inesperado ocorreu')
+        print(error)   
 
 def ler_detalhes_contato() :
     telefone = input("Digite o telefone do Contato")
@@ -71,15 +67,11 @@ def excluir_contato(contato):
         salvar()
         print("Contato excluído {} com sucesso".format(contato))
         print("-------------------------------------------")
-    except Exception as error :
-        print("-------------------------------------------")
-        print(">>>>>>>>>>>>>>Contato inexistente")
+    except KeyError:
+        print('>>>> Contato inexistente')
+    except Exception as error:
+        print('>>>> Um erro inesperado ocorreu')
         print(error)
-        print("-------------------------------------------")
-    except :
-        print("-------------------------------------------")
-        print(">>>>>>>>>>>>>> Um erro inesperado ocorreu")
-        print("-------------------------------------------")
         
 def exportar_contatos(nome_do_arquivo):
     try :        
@@ -107,15 +99,15 @@ def importar_contatos(nome_do_arquivo):
                 endereco = detalhes[3]
                 
                 incluir_editar_contato(nome,telefone, email, endereco)
-    except Exception as error :
+    except FileNotFoundError:
+        print('>>>> Arquivo não encontrado')
+    except Exception as error:
+        print('>>>> Algum erro inesperado ocorreu')
         print(error)
-        print("algum erro inesperado ocorreu")
-    except FileNotFoundError :
-        print("arquivo não encontrado")
         
 def salvar():
     exportar_contatos("database.csv")
-    print(">>>>>agenda exportada com sucesso!!!!!")
+    
     
 def carregar():
     try :
