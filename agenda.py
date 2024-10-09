@@ -121,11 +121,11 @@ def carregar():
                 email = detalhes[2]
                 endereco = detalhes[3]
                 
-            AGENDA[nome] = {
-        "telefone" : telefone, 
-        "email" : email, 
-        "endereco" : endereco
-        }
+                AGENDA[nome] = {
+                "telefone" : telefone, 
+                "email" : email, 
+                "endereco" : endereco
+                }
         print(">>>>Database carregado com sucesso")
         print(">>>> {} contatos carregados com sucesso".format(len(AGENDA)))
     except Exception as error :
